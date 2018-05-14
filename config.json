@@ -1,0 +1,45 @@
+{
+    "player" : {"startX": 5, "startY": 5},
+    "walls" : [
+
+        {"startX": 8, "startY": 7}
+    ],
+    "crates" : [
+
+        {"startX": 6, "startY": 6}
+    ],
+
+    "finishes" : [
+        {"startX": 3, "startY": 3},
+        {"startX": 6, "startY": 3},
+        {"startX": 7, "startY": 3},
+        {"startX": 7, "startY": 4},
+        {"startX": 7, "startY": 6},
+        {"startX": 7, "startY": 7},
+        {"startX": 6, "startY": 7},
+        {"startX": 3, "startY": 7}
+    ]
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
