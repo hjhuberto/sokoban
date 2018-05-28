@@ -13,7 +13,10 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyListener;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
-import java.util.Timer;
+
+import javax.swing.Timer;
+
+import java.util.concurrent.TimeUnit;
 
 import java.util.List;
 
@@ -52,9 +55,9 @@ public class Controller extends JPanel implements ActionListener, KeyListener {
     private Crate crate;
     private Map map;
     private int dX;
+    private int dir;
+
     private Timer timer;
-
-
 
 
     /**
@@ -64,7 +67,6 @@ public class Controller extends JPanel implements ActionListener, KeyListener {
     public Controller(){
         this.sizeMap = new Map();
         this.errorFrame = new JFrame("Error");
-        timer = new Timer();
 
 
         /* mainMenuWindow */
@@ -92,7 +94,6 @@ public class Controller extends JPanel implements ActionListener, KeyListener {
         bestResultsWindow.setLocationRelativeTo(null); // ustawia okno w centrum ekranu
 
 
-
         /* Panele */
         this.menuPanel = new JPanel();
         this.gamePlayPanel = new JPanel();
@@ -109,6 +110,7 @@ public class Controller extends JPanel implements ActionListener, KeyListener {
         /* Elementy potrzebne do klasyfikacji gracza */
         this.player1 = new Results();
 
+        this.timer = new Timer(40, this);
     }
 
 
@@ -173,6 +175,9 @@ public class Controller extends JPanel implements ActionListener, KeyListener {
         player = config.getPlayer();
         finishes = config.getFinishes();
         crates = config.getCrates();
+
+        dir = dir;
+        dir=0;
 
         map = new Map(walls, player, crates, finishes);
 
@@ -302,6 +307,9 @@ public class Controller extends JPanel implements ActionListener, KeyListener {
             gamePlayWindow.setVisible(false);
             mainWindow.setVisible(true);
         }
+        else if (event.getSource() == timer){
+            updateGameplay(dir);
+        }
     }
 
     public void keyTyped(KeyEvent e) {}
@@ -309,151 +317,148 @@ public class Controller extends JPanel implements ActionListener, KeyListener {
 
 
     public void keyPressed(KeyEvent e) {
+        dX = 2;
         if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
             System.out.println("wcisnieto strzalke w prawo");
+            dir=1;
 
-            if (player.wallCollision(1, player, walls)) {
+            if (player.wallCollision(dir, player, walls)) {
                 System.out.println("kolizja gracz-sciana");
                 return;
             }
-            else if (player.crateCollision(1, player, crates) !=null){
-                Crate crate = player.crateCollision(1, player, crates);
-                if (crate.wallCollision(1, crate, walls)) {
+            else if (player.crateCollision(dir, player, crates) !=null){
+                Crate crate = player.crateCollision(dir, player, crates);
+                if (crate.wallCollision(dir, crate, walls)) {
                     System.out.println("kolizja skrzynia-sciana");
                     return;
                 }
-                else if (crate.crateCollision(1, crate, crates) != null){
+                else if (crate.crateCollision(dir, crate, crates) != null){
                     System.out.println("kolizja skrzynia-skrzynia");
                     return;
                 }
-                else if (crate.crateCollision(1, crate, crates) == null){
+                else if (crate.crateCollision(dir, crate, crates) == null){
                     System.out.println("przesunieto skrzynie");
                     crate.move(1,0);
                     player.move(1,0);
-                    this.updateGameplay(1);
+                    this.updateGameplay(dir);
                 }
             }
             else if (player.crateCollision(1, player, crates) == null) {
                 System.out.println("przesunieto gracza");
                 player.move(1,0);
-                this.updateGameplay(1);
-
+                timer.start();
+                this.updateGameplay(dir);
             }
         }
 
         if (e.getKeyCode() == KeyEvent.VK_DOWN) {
             System.out.println("wcisnieto strzalke w dol");
-            if (player.wallCollision(2, player, walls)) {
+            dir=2;
+
+            if (player.wallCollision(dir, player, walls)) {
                 System.out.println("kolizja gracz-sciana");
                 return;
             }
-            else if (player.crateCollision(2, player, crates) !=null){
-                Crate crate = player.crateCollision(2, player, crates);
-                if (crate.wallCollision(2, crate, walls)) {
+            else if (player.crateCollision(dir, player, crates) !=null){
+                Crate crate = player.crateCollision(dir, player, crates);
+                if (crate.wallCollision(dir, crate, walls)) {
                     System.out.println("kolizja skrzynia-sciana");
                     return;
                 }
-                else if (crate.crateCollision(2, crate, crates) != null){
+                else if (crate.crateCollision(dir, crate, crates) != null){
                     System.out.println("kolizja skrzynia-skrzynia");
                     return;
                 }
-                else if (crate.crateCollision(2, crate, crates) == null){
+                else if (crate.crateCollision(dir, crate, crates) == null){
                     System.out.println("przesunieto skrzynie");
                     crate.move(0,1);
                     player.move(0,1);
-                    this.updateGameplay(2);
+                    this.updateGameplay(dir);
                 }
             }
-            else if (player.crateCollision(2, player, crates) == null) {
+            else if (player.crateCollision(dir, player, crates) == null) {
                 System.out.println("przesunieto gracza");
                 player.move(0,1);
-                this.updateGameplay(2);
+                timer.start();
+                this.updateGameplay(dir);
             }
         }
         if (e.getKeyCode() == KeyEvent.VK_LEFT) {
             System.out.println("wcisnieto strzalke w lewo");
+            dir=3;
 
-            if (player.wallCollision(3, player, walls)) {
+            if (player.wallCollision(dir, player, walls)) {
                 System.out.println("kolizja gracz-sciana");
                 return;
             }
-            else if (player.crateCollision(3, player, crates) !=null){
-                Crate crate = player.crateCollision(3, player, crates);
-                if (crate.wallCollision(3, crate, walls)) {
+            else if (player.crateCollision(dir, player, crates) !=null){
+                Crate crate = player.crateCollision(dir, player, crates);
+                if (crate.wallCollision(dir, crate, walls)) {
                     System.out.println("kolizja skrzynia-sciana");
                     return;
                 }
-                else if (crate.crateCollision(3, crate, crates) != null){
+                else if (crate.crateCollision(dir, crate, crates) != null){
                     System.out.println("kolizja skrzynia-skrzynia");
                     return;
                 }
-                else if (crate.crateCollision(3, crate, crates) == null){
+                else if (crate.crateCollision(dir, crate, crates) == null){
                     System.out.println("przesunieto skrzynie");
                     crate.move(-1,0);
                     player.move(-1,0);
-                    this.updateGameplay(3);
+                    this.updateGameplay(dir);
                 }
             }
-            else if (player.crateCollision(3, player, crates) == null) {
+            else if (player.crateCollision(dir, player, crates) == null) {
                 System.out.println("przesunieto gracza");
                 player.move(-1,0);
-                this.updateGameplay(3);
+                timer.start();
+                this.updateGameplay(dir);
             }
         }
         if (e.getKeyCode() == KeyEvent.VK_UP) {
             System.out.println("wcisnieto strzalke w gore");
+            dir=4;
 
-            if (player.wallCollision(4, player, walls)) {
+            if (player.wallCollision(dir, player, walls)) {
                 System.out.println("kolizja gracz-sciana");
                 return;
             }
-            else if (player.crateCollision(4, player, crates) !=null){
-                Crate crate = player.crateCollision(4, player, crates);
-                if (crate.wallCollision(4, crate, walls)) {
+            else if (player.crateCollision(dir, player, crates) !=null){
+                Crate crate = player.crateCollision(dir, player, crates);
+                if (crate.wallCollision(dir, crate, walls)) {
                     System.out.println("kolizja skrzynia-sciana");
                     return;
                 }
-                else if (crate.crateCollision(4, crate, crates) != null){
+                else if (crate.crateCollision(dir, crate, crates) != null){
                     System.out.println("kolizja skrzynia-skrzynia");
                     return;
                 }
-                else if (crate.crateCollision(4, crate, crates) == null){
+                else if (crate.crateCollision(dir, crate, crates) == null){
                     System.out.println("przesunieto skrzynie");
                     crate.move(0,-1);
                     player.move(0,-1);
-                    this.updateGameplay(4);
+                    this.updateGameplay(dir);
                 }
             }
-            else if (player.crateCollision(4, player, crates) == null) {
+            else if (player.crateCollision(dir, player, crates) == null) {
                 System.out.println("przesunieto gracza");
                 player.move(0,-1);
-                this.updateGameplay(4);
+                timer.start();
+                this.updateGameplay(dir);
             }
         }
     }
     public void updateGameplay(int dir)
     {
-        for (int i = 0; i < 11; i++) {
-            dX = (i*sizeMap.getElementSize()/10);
-            map.updateMap(walls, player, crates, finishes);
-            view2.setElements2(map.getMapArray(), player, crate, dir, dX );
-            view2.repaint();
-            try
-            {
-                Thread.sleep(100);
-            }
-            catch(InterruptedException ex)
-            {
-                Thread.currentThread().interrupt();
-            }
+        dX = dX+(sizeMap.getElementSize()/sizeMap.getSize());
+        map.updateMap(walls, player, crates, finishes);
+        view2.setElements2(map.getMapArray(), player, crate, dir, dX );
+        view2.repaint();
+
+        if (dX >= sizeMap.getElementSize()) {
+            timer.stop();
         }
     }
-    Thread t1 = new Thread(new Runnable() {
-        public void run()
-        {
-            // code goes here.
-        }});
-    t1.start();
 
     public boolean levelComplete() {
         int k = 0;

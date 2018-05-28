@@ -28,7 +28,7 @@ public class Map {
      */
     public Map(){
         this.size = 12;
-        this.boardSize = 840;
+        this.boardSize = 696;
     }
 
     /**

@@ -55,6 +55,7 @@ public class View2 extends JPanel {
      * Metoda opisująca sposob rysowania elementow rozgrywki.
      */
     public void paint(Graphics g) {
+
         if (this.direction == 0) {
             for (int i = 0; i < elements.length; i++) {
                 for (int j = 0; j < elements.length; j++) {
@@ -81,6 +82,7 @@ public class View2 extends JPanel {
                 }
             }
         }
+
         if (this.direction == 1) {
             for (int i = 0; i < elements.length; i++) {
                 for (int j = 0; j < elements.length; j++) {
@@ -90,6 +92,87 @@ public class View2 extends JPanel {
                         g.fillRect(((j-1) * sizeMap.getElementSize())+dX, i * sizeMap.getElementSize(), sizeMap.getElementSize(), sizeMap.getElementSize());
                         g.setColor(Color.cyan);
                         g.fillOval(((j-1) * sizeMap.getElementSize())+dX, i * sizeMap.getElementSize(), sizeMap.getElementSize(), sizeMap.getElementSize());
+                    } else if (element instanceof Wall) {
+                        g.setColor(Color.blue);
+                        g.fillRect(j * sizeMap.getElementSize(), i * sizeMap.getElementSize(), sizeMap.getElementSize(), sizeMap.getElementSize());
+                    } else if (element instanceof Crate) {
+                        g.setColor(Color.magenta);
+                        g.fillRect(j * sizeMap.getElementSize(), i * sizeMap.getElementSize(), sizeMap.getElementSize(), sizeMap.getElementSize());
+                    } else if (element instanceof Finish) {
+                        g.setColor(Color.yellow);
+                        g.fillRect(j * sizeMap.getElementSize(), i * sizeMap.getElementSize(), sizeMap.getElementSize(), sizeMap.getElementSize());
+                    } else {
+                        g.setColor(Color.gray);
+                        g.fillRect(j * sizeMap.getElementSize(), i * sizeMap.getElementSize(), sizeMap.getElementSize(), sizeMap.getElementSize());
+                    }
+
+                }
+            }
+        }
+
+        if (this.direction == 2) {
+            for (int i = 0; i < elements.length; i++) {
+                for (int j = 0; j < elements.length; j++) {
+                    Element element = elements[i][j];
+                    if (element instanceof Player) {
+                        g.setColor(Color.gray);
+                        g.fillRect(j * sizeMap.getElementSize(), (i-1) * sizeMap.getElementSize()+dX, sizeMap.getElementSize(), sizeMap.getElementSize());
+                        g.setColor(Color.cyan);
+                        g.fillOval(j * sizeMap.getElementSize(), (i-1) * sizeMap.getElementSize()+dX, sizeMap.getElementSize(), sizeMap.getElementSize());
+                    } else if (element instanceof Wall) {
+                        g.setColor(Color.blue);
+                        g.fillRect(j * sizeMap.getElementSize(), i * sizeMap.getElementSize(), sizeMap.getElementSize(), sizeMap.getElementSize());
+                    } else if (element instanceof Crate) {
+                        g.setColor(Color.magenta);
+                        g.fillRect(j * sizeMap.getElementSize(), i * sizeMap.getElementSize(), sizeMap.getElementSize(), sizeMap.getElementSize());
+                    } else if (element instanceof Finish) {
+                        g.setColor(Color.yellow);
+                        g.fillRect(j * sizeMap.getElementSize(), i * sizeMap.getElementSize(), sizeMap.getElementSize(), sizeMap.getElementSize());
+                    } else {
+                        g.setColor(Color.gray);
+                        g.fillRect(j * sizeMap.getElementSize(), i * sizeMap.getElementSize(), sizeMap.getElementSize(), sizeMap.getElementSize());
+                    }
+
+                }
+            }
+        }
+
+        if (this.direction == 3) {
+            for (int i = 0; i < elements.length; i++) {
+                for (int j = 0; j < elements.length; j++) {
+                    Element element = elements[i][j];
+                    if (element instanceof Player) {
+                        g.setColor(Color.gray);
+                        g.fillRect((j+1) * sizeMap.getElementSize()-dX, i * sizeMap.getElementSize(), sizeMap.getElementSize(), sizeMap.getElementSize());
+                        g.setColor(Color.cyan);
+                        g.fillOval((j+1) * sizeMap.getElementSize()-dX, i * sizeMap.getElementSize(), sizeMap.getElementSize(), sizeMap.getElementSize());
+                    } else if (element instanceof Wall) {
+                        g.setColor(Color.blue);
+                        g.fillRect(j * sizeMap.getElementSize(), i * sizeMap.getElementSize(), sizeMap.getElementSize(), sizeMap.getElementSize());
+                    } else if (element instanceof Crate) {
+                        g.setColor(Color.magenta);
+                        g.fillRect(j * sizeMap.getElementSize(), i * sizeMap.getElementSize(), sizeMap.getElementSize(), sizeMap.getElementSize());
+                    } else if (element instanceof Finish) {
+                        g.setColor(Color.yellow);
+                        g.fillRect(j * sizeMap.getElementSize(), i * sizeMap.getElementSize(), sizeMap.getElementSize(), sizeMap.getElementSize());
+                    } else {
+                        g.setColor(Color.gray);
+                        g.fillRect(j * sizeMap.getElementSize(), i * sizeMap.getElementSize(), sizeMap.getElementSize(), sizeMap.getElementSize());
+                    }
+
+                }
+            }
+        }
+
+        if (this.direction == 4) {
+            for (int i = 0; i < elements.length; i++) {
+                for (int j = 0; j < elements.length; j++) {
+                    Element element = elements[i][j];
+                    if (element instanceof Player) {
+                        g.setColor(Color.gray);
+                        g.fillRect(j * sizeMap.getElementSize(), (i+1) * sizeMap.getElementSize()-dX, sizeMap.getElementSize(), sizeMap.getElementSize());
+                        g.setColor(Color.cyan);
+                        g.fillOval(j * sizeMap.getElementSize(), (i+1) * sizeMap.getElementSize()-dX, sizeMap.getElementSize(), sizeMap.getElementSize());
                     } else if (element instanceof Wall) {
                         g.setColor(Color.blue);
                         g.fillRect(j * sizeMap.getElementSize(), i * sizeMap.getElementSize(), sizeMap.getElementSize(), sizeMap.getElementSize());
@@ -123,16 +206,7 @@ public class View2 extends JPanel {
         }
         System.out.println("-------------------------------");
     }
-
-
-    /**
-     * Metoda wyswietlajaca okno rozgrywki.
-     */
-    //public void draw(JFrame window){
-      //  window.add(this);
-    //}
 }
-
 
 
 
