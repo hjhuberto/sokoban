@@ -1,0 +1,61 @@
+{
+    "player" : {"startX": 7, "startY": 5},
+    "walls" : [
+        {"startX": 2, "startY": 2},
+        {"startX": 3, "startY": 2},
+        {"startX": 4, "startY": 2},
+        {"startX": 5, "startY": 2},
+        {"startX": 6, "startY": 2},
+        {"startX": 7, "startY": 2},
+        {"startX": 8, "startY": 2},
+        {"startX": 2, "startY": 8},
+        {"startX": 3, "startY": 8},
+        {"startX": 4, "startY": 8},
+        {"startX": 5, "startY": 8},
+        {"startX": 6, "startY": 8},
+        {"startX": 7, "startY": 8},
+        {"startX": 8, "startY": 8},
+        {"startX": 2, "startY": 3},
+        {"startX": 2, "startY": 4},
+        {"startX": 2, "startY": 5},
+        {"startX": 2, "startY": 6},
+        {"startX": 2, "startY": 7},
+        {"startX": 8, "startY": 3},
+        {"startX": 8, "startY": 4},
+        {"startX": 8, "startY": 5},
+        {"startX": 8, "startY": 6},
+        {"startX": 8, "startY": 7}
+    ],
+    "crates" : [
+        {"startX": 6, "startY": 5},
+        {"startX": 6, "startY": 6}
+    ],
+
+    "finishes" : [
+        {"startX": 6, "startY": 7},
+        {"startX": 5, "startY": 5}
+    ]
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

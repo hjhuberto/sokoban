@@ -1,0 +1,83 @@
+{
+    "player" : {"startX": 3, "startY": 7},
+    "walls" : [
+        {"startX": 1, "startY": 4},
+        {"startX": 2, "startY": 4},
+        {"startX": 3, "startY": 4},
+        {"startX": 4, "startY": 4},
+        {"startX": 5, "startY": 4},
+        {"startX": 6, "startY": 4},
+        {"startX": 7, "startY": 4},
+        {"startX": 8, "startY": 4},
+        {"startX": 9, "startY": 4},
+        {"startX": 10, "startY": 7},
+		{"startX": 10, "startY": 8},
+		{"startX": 10, "startY": 9},
+		{"startX": 10, "startY": 10},
+		{"startX": 10, "startY": 11},
+		{"startX": 9, "startY": 11},
+        {"startX": 1, "startY": 12},
+        {"startX": 2, "startY": 12},
+        {"startX": 3, "startY": 12},
+        {"startX": 4, "startY": 12},
+        {"startX": 5, "startY": 12},
+        {"startX": 6, "startY": 12},
+        {"startX": 7, "startY": 12},
+        {"startX": 8, "startY": 12},
+        {"startX": 9, "startY": 12},
+        {"startX": 10, "startY": 12},		
+		{"startX": 1, "startY": 5},
+        {"startX": 1, "startY": 6},
+        {"startX": 1, "startY": 7},
+        {"startX": 1, "startY": 8},
+        {"startX": 1, "startY": 9},
+        {"startX": 1, "startY": 10},
+        {"startX": 1, "startY": 11},
+		{"startX": 9, "startY": 5},
+        {"startX": 9, "startY": 6},
+        {"startX": 9, "startY": 7},
+		{"startX": 1, "startY": 8},
+        {"startX": 1, "startY": 9},
+        {"startX": 1, "startY": 10},
+        {"startX": 1, "startY": 11},
+		{"startX": 4, "startY": 5},
+        {"startX": 4, "startY": 7},
+        {"startX": 4, "startY": 9},
+        {"startX": 2, "startY": 8},
+		{"startX": 6, "startY": 7},
+        {"startX": 6, "startY": 11},
+        {"startX": 7, "startY": 9}
+    ],
+    "crates" : [
+        {"startX": 4, "startY": 8},
+        {"startX": 5, "startY": 9}
+    ],
+
+    "finishes" : [
+        {"startX": 6, "startY": 8},
+        {"startX": 5, "startY": 10}
+    ]
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
